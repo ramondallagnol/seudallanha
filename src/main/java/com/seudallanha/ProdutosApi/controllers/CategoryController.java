@@ -3,6 +3,8 @@ package com.seudallanha.ProdutosApi.controllers;
 import com.seudallanha.ProdutosApi.models.Category;
 import com.seudallanha.ProdutosApi.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -14,8 +16,8 @@ public class CategoryController {
     CategoryService categoryService;
 
     @PostMapping
-    public Category create(@RequestBody Category category) {
-        return categoryService.save(category);
+    public ResponseEntity<Category> create(@RequestBody Category category) {
+        return new ResponseEntity<>(categoryService.save(category), HttpStatus.CREATED);
     }
 
     @GetMapping
