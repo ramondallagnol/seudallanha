@@ -1,10 +1,7 @@
 package com.seudallanha.ProdutosApi.models;
 
 import com.seudallanha.ProdutosApi.enums.BillType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,6 +16,8 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,8 +25,8 @@ public class Bill {
 
     private String mesAno;
     private String description;
-    public BigDecimal amount;
-    public BillType billType;
+    private BigDecimal amount;
+    private BillType billType;
 
     @CreationTimestamp
     private LocalDate createdAt;
