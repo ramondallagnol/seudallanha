@@ -25,8 +25,14 @@ public class BillController {
     }
 
     @GetMapping("/{mesAno}")
-    public ResponseEntity<Collection<Bill>> findById(@PathVariable("mesAno") String mesAno) {
+    public ResponseEntity<Collection<Bill>> findByMesAno(@PathVariable("mesAno") String mesAno) {
         return ResponseEntity.ok(billService.findByMesANo(mesAno));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
+        billService.delete(id);
+        return ResponseEntity.ok(id);
     }
 
 }
